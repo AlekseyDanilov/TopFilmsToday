@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TopFilms</string>
+    <string name="close_image_description">close image</string>
+    <string name="error_image_description">error image</string>
+    <string name="arrow">arrow_description</string>
+    <string name="image_url">https://image.tmdb.org/t/p/w500%1$s</string>
+</resources>
