@@ -1,6 +1,9 @@
 package ru.alekseydanilov.topfilmstoday.workroom
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import ru.alekseydanilov.topfilmstoday.model.FilmModel
 
 @Dao
@@ -13,7 +16,6 @@ interface FilmDao {
     @JvmSuppressWildcards
     fun insertAll(filmModelList: List<FilmModel>)
 
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(filmModel: FilmModel)
 
@@ -22,10 +24,4 @@ interface FilmDao {
 
     @Query("DELETE FROM film_models")
     fun deleteAllTable()
-
-    @Delete
-    fun delete(filmModel: FilmModel)
-
-    @Update
-    fun update(vararg filmModel: FilmModel)
 }
