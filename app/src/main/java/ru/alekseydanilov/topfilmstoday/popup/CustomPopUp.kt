@@ -1,7 +1,5 @@
 package ru.alekseydanilov.topfilmstoday.popup
 
-import android.app.Activity
-import android.content.Context
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -20,11 +18,8 @@ class CustomPopUp : PopupWindow() {
      * @param activity - activity, в которой мы работаем
      * @param parent   - view представление, внутри которого мы отображаем popUP
      */
-    fun showPopUp(activity: Activity, parent: View, message: String) {
-        val layoutInflater =
-            activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-
-        val customView: View = layoutInflater.inflate(R.layout.popup_layout, null)
+    fun showPopUp(ltInflater: LayoutInflater, parent: View, message: String) {
+        val customView: View = ltInflater.inflate(R.layout.popup_layout, null)
 
         val image = customView.findViewById<ImageView>(R.id.imagePopUp)
         val closeBtn = customView.findViewById<ImageView>(R.id.close_popup_btn)

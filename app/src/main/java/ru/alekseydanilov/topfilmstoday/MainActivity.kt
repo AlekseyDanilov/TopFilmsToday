@@ -16,6 +16,7 @@ import ru.alekseydanilov.topfilmstoday.workroom.FilmDao
 import java.io.IOException
 import java.util.*
 
+
 class MainActivity : AppCompatActivity(), OnRefreshListener, CoroutineScope {
 
     var listFilms: MutableList<FilmModel> = ArrayList()
@@ -82,11 +83,19 @@ class MainActivity : AppCompatActivity(), OnRefreshListener, CoroutineScope {
 
                     } else {
                         Log.e("MainActivity ", response.errorBody().toString())
+                        customPopUp.showPopUp(
+                            layoutInflater, mainLinear,
+                            "Возникла ошибка при получении фильмов"
+                        )
                         progressBarHolder.visibility = View.GONE
                         swipeContainer.isRefreshing = false
                     }
                 } catch (e: Exception) {
                     Log.e("MainActivity", e.message)
+                    customPopUp.showPopUp(
+                        layoutInflater, mainLinear,
+                        "Возникла ошибка сети при получении фильмов. Проверьте доступ в интернет на Вашем устройстве"
+                    )
                     progressBarHolder.visibility = View.GONE
                     swipeContainer.isRefreshing = false
                 }
@@ -96,7 +105,7 @@ class MainActivity : AppCompatActivity(), OnRefreshListener, CoroutineScope {
                 Log.e("MainActivity", "Ошибка получения ключа")
             }
             customPopUp.showPopUp(
-                this, mainLinear,
+                layoutInflater, mainLinear,
                 "Не удалось получить список фильмов. Инициализируйте ключ в assets/app.properties"
             )
             progressBarHolder.visibility = View.GONE
